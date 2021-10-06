@@ -1,23 +1,2 @@
-﻿@page "/Counter"
+﻿@page "/"
 
-@implements IDisposable
-
-@using BlazorServerApp.Pages.ButtonInput
-
-<ChildComponent InputAttributes="attributesFromParent">
-</ChildComponent>
-
-@code {
-    public Dictionary<string, object> attributesFromParent { get; set; } =
-        new Dictionary<string, object>()
-        {
-            { "required", "required" },
-            { "placeholder", "Parent Component Placeholder" }
-        };
-
-    public void Dispose()
-    {
-        attributesFromParent.Clear();
-        attributesFromParent = null;
-    }
-}

@@ -1,16 +1,23 @@
-﻿@page "/"
+﻿@page "/Counter"
 
-<h1>Counter</h1>
+@implements IDisposable
 
-<p>Current count: @currentCount</p>
+@using BlazorServerApp.Pages.ButtonInput
 
-<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<ChildComponent InputAttributes="attributesFromParent">
+</ChildComponent>
 
 @code {
-    private int currentCount = 0;
+    public Dictionary<string, object> attributesFromParent { get; set; } =
+        new Dictionary<string, object>()
+        {
+            { "required", "required" },
+            { "placeholder", "Parent Component Placeholder" }
+            };
 
-    private void IncrementCount()
+    public void Dispose()
     {
-        currentCount++;
+        attributesFromParent.Clear();
+        attributesFromParent = null;
     }
 }
